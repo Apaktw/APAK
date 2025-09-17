@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弘鼎材料科技有限公司 - APAK Material Ltd.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 40px;
+            background: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(44, 62, 133, 0.3);
+        }
+
+        .company-name {
+            color: #2c3e85;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            margin-left: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #2c3e85;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #2c3e85;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(240, 242, 255, 0.95), rgba(248, 250, 255, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(44,62,133,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            color: #2c3e85;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background: white;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4ff 100%);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e85;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* About Us Specific Styles */
+        .expertise-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 50px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .expertise-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            padding: 35px 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            text-align: left;
+        }
+
+        .expertise-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+            transform-origin: bottom;
+        }
+
+        .expertise-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .expertise-item:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12));
+        }
+
+        .expertise-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .expertise-item:hover .expertise-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .expertise-content {
+            flex: 1;
+        }
+
+        .expertise-item h3 {
+            color: #2c3e85;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .expertise-item p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products-list {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="tech-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(102,126,234,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23tech-grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            z-index: 2;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            z-index: 3;
+        }
+
+        .product-card h3 {
+            color: #2c3e85;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .product-source {
+            color: #667eea;
+            font-style: italic;
+            font-size: 0.95rem;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 0 0 15px 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e85;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 50px;
+            background: white;
+            color: #2c3e85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .company-name {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .expertise-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 25px;
+            }
+
+            .expertise-item:hover {
+                transform: translateY(-5px) scale(1.02);
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-card {
+                margin: 0 10px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for elements on scroll */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo.png" alt="APAK Logo" style="width: 60px; height: 40px; object-fit: contain;">
+                    <div class="company-name">弘鼎材料科技有限公司</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your Trusted IC Assembly Partner</h1>
+            <p>Over 20 years of excellence in Taiwan's semiconductor industry</p>
+            <a href="#about" class="cta-button">Discover More</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="section-content">
+                <p style="font-size: 1.3rem; margin-bottom: 30px; color: #2c3e85; font-weight: 600;">
+                    <em>Your Trusted Partner in IC Assembly Solution</em>
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8;">
+                    With over 20 years of experience in the IC assembly market in Taiwan, APAK Material Ltd. stands out as a leading agent specializing in high-quality IC assembly materials. Our extensive expertise, rooted in our team's background at ASMPT Material Sales, enables us to deliver exceptional products and services.
+                </p>
+                
+                <h3 style="font-size: 2rem; color: #2c3e85; margin: 40px 0 30px;">Our Expertise</h3>
+                
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🎯</div>
+                        <div class="expertise-content">
+                            <h3>Industry Knowledge</h3>
+                            <p>Based on our extensive experience, we have a deep understanding of our customers' technical needs.</p>
+                        </div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">✓</div>
+                        <div class="expertise-content">
+                            <h3>Quality Assurance</h3>
+                            <p>We cooperate with excellent vendors that provide suitable products that meet your needs.</p>
+                        </div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">💎</div>
+                        <div class="expertise-content">
+                            <h3>Customer-Centric Approach</h3>
+                            <p>We prioritize your needs and satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Product Introduction</h2>
+            <div class="section-content">
+                <p style="font-size: 1.2rem; margin-bottom: 40px; color: #2c3e85; font-weight: 600;">
+                    <em>APAK Material Ltd., we strive to be your go-to partner for all IC assembly needs.</em>
+                </p>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Featured</div>
+                        <div class="product-number">1</div>
+                        <div class="product-image">
+                            <img src="product1.jpg" alt="IC Lead Frames" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>IC Lead Frames (Stamped / Etched Frame)</h3>
+                            <div class="product-source">Source from ROKKO(S.G.), JIEXIN(CN), WISE(CN)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Solution</div>
+                        <div class="product-number">2</div>
+                        <div class="product-image">
+                            <img src="product2.jpg" alt="Jig Saw Solution" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>Jig Saw + AOI + PNP One Station Solution</h3>
+                            <div class="product-source">Source from ROKKO(S.G.) & Saw engine from DISCO</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-number">3</div>
+                        <div class="product-image">
+                            <img src="product3.jpg" alt="Die Bonder" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>Die Bonder</h3>
+                            <div class="product-source">Source from CN vendor</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-number">4</div>
+                        <div class="product-image">
+                            <img src="product4.jpg" alt="MIS Substrate" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>MIS Substrate</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-number">5</div>
+                        <div class="product-image">
+                            <img src="product5.jpg" alt="Equipment Spare Parts" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>Equipment Spare Parts</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-number">6</div>
+                        <div class="product-image">
+                            <img src="product6.jpg" alt="Conversion Kit" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-content">
+                            <h3>Conversion Kit</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Henry Fang</h3>
+                    <p><a href="mailto:Henry.fang@apak.com.tw">Henry.fang@apak.com.tw</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>Jerry Lien</h3>
+                    <p><a href="mailto:Jerry.lien@apak.com.tw">Jerry.lien@apak.com.tw</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="logo.png" alt="APAK Logo" style="width: 80px; height: 50px; object-fit: contain; background: white; border-radius: 10px; padding: 5px;">
+            <p>&copy; APAK Material Ltd. 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add hover effects to product items
+        document.querySelectorAll('.product-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
