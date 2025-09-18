@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APAK Material & APAK Enterprises - IC Assembly Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo img {
+            width: 6010x;
+            height: 60px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            object-fit: contain;
+        }
+
+        .company-names {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .company-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* About Us */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .expertise-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .expertise-list li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .expertise-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .product-source {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .contact-email a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            color: #764ba2;
+        }
+
+        /* Vision Section */
+        .vision {
+            position: relative;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .vision-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .vision-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            z-index: -1;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 90px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Language Toggle */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <!-- Replace 'logo.png' with your actual APAK logo file -->
+                        <img src="logo.png" alt="APAK Logo">
+                    </div>
+                    <div class="company-names">
+                        <div class="company-name" data-en="APAK Material Ltd." data-zh="弘鼎材料科技有限公司">弘鼎材料科技有限公司</div>
+                        <div class="company-name" data-en="APAK Enterprises Inc." data-zh="元泰亨企業有限公司">元泰亨企業有限公司</div>
+                    </div>
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+                    <button class="lang-btn" onclick="switchLanguage('zh')">繁體中文</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with APAK PKG Image -->
+    <section class="hero">
+        <!-- Replace 'APAK PKG 形象圖.jpg' with your actual image file -->
+        <img src="APAK PKG 形象圖.jpg" alt="APAK PKG" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="lang-content active" id="hero-en">
+                    <h1>IC Assembly Solutions</h1>
+                    <p>Your Trusted Partner in Advanced Technology</p>
+                </div>
+                <div class="lang-content" id="hero-zh">
+                    <h1>IC封裝解決方案</h1>
+                    <p>您值得信賴的先進技術夥伴</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <div class="lang-content active" id="about-en">
+                <h2 class="section-title">About Us</h2>
+                <div class="about-grid">
+                    <div class="about-card fade-in">
+                        <h3>Your Trusted Partner in IC Assembly Solution</h3>
+                        <p>With over 20 years of experience in the IC assembly market in Taiwan, APAK Material & APAK Enterprises stand out as a leading agent specializing in high-quality IC assembly solution. Our extensive expertise, rooted in our team's background at ASMPT Sales, enables us to deliver exceptional products and services.</p>
+                    </div>
+                    <div class="about-card fade-in">
+                        <h3>Our Expertise</h3>
+                        <ul class="expertise-list">
+                            <li><strong>Industry Knowledge</strong>: Based on our extensive experience, we have a deep understanding of our customers' technical needs.</li>
+                            <li><strong>Quality Assurance</strong>: We cooperate with excellent vendors that provide suitable products that meet your needs.</li>
+                            <li><strong>Customer-Centric Approach</strong>: We prioritize your needs and satisfaction.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="lang-content" id="about-zh">
+                <h2 class="section-title">關於我們</h2>
+                <div class="about-grid">
+                    <div class="about-card fade-in">
+                        <h3>您值得信賴的IC封裝解決方案夥伴</h3>
+                        <p>在台灣IC封裝市場擁有超過20年的經驗，弘鼎材料 與 元泰亨企業 是專精於高品質IC封裝解決方案的領先代理商。我們豐富的專業知識，源自於團隊在ASMPT 的背景，使我們能夠提供卓越的產品和服務。</p>
+                    </div>
+                    <div class="about-card fade-in">
+                        <h3>我們的專業能力</h3>
+                        <ul class="expertise-list">
+                            <li><strong>行業知識</strong>：基於我們豐富的經驗，我們深刻理解客戶的技術需求。</li>
+                            <li><strong>品質保證</strong>：我們與優秀的供應商合作，提供符合您需求的適合產品。</li>
+                            <li><strong>以客戶為中心的方法</strong>：我們優先考慮您的需求和滿意度。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" style="background: white;">
+        <div class="container">
+            <div class="lang-content active" id="products-en">
+                <h2 class="section-title">Our Products</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: #666;">
+                    <em>At APAK Material Ltd. & APAK Enterprises Inc., we strive to be your go-to partner for all IC assembly needs.</em>
+                </p>
+                <div class="products-grid">
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual Lead frame image -->
+                            <img src="Lead frame.jpg" alt="IC Lead Frames">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">IC Lead Frames (Stamped / Etched Frame)</div>
+                            <div class="product-source">Source from ROKKO(SG), JIEXIN(CN), WISE(CN)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual Jig Saw AOI PNP image -->
+                            <img src="Jig Saw AOI PNP.jpg" alt="Jig Saw + AOI + PNP">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Jig Saw + AOI + PNP One Station Solution</div>
+                            <div class="product-source">Source from ROKKO(SG) & Saw engine from DISCO(JP)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual Die Bonder image -->
+                            <img src="Die Bonder.jpg" alt="Die Bonder">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Die Bonder</div>
+                            <div class="product-source">Source from M.S.C.INDUSTRY(CN)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual MIS Substrate image -->
+                            <img src="MIS Substrate.jpg" alt="MIS Substrate">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">MIS Substrate</div>
+                            <div class="product-source">High-quality substrate solutions</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual Spare parts image -->
+                            <img src="Spare parts.jpg" alt="Equipment Spare Parts">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Equipment Spare Parts</div>
+                            <div class="product-source">Comprehensive spare parts inventory</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <!-- Replace with your actual Conversion kit image -->
+                            <img src="Conversion kit.jpg" alt="Conversion Kit">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">Conversion Kit</div>
+                            <div class="product-source">Flexible conversion solutions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lang-content" id="products-zh">
+                <h2 class="section-title">產品介紹</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: #666;">
+                    <em>在弘鼎材料 與 元泰亨企業，我們致力於成為您所有IC封裝需求的首選夥伴。</em>
+                </p>
+                <div class="products-grid">
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="Lead frame.jpg" alt="IC導線架">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">IC導線架 (沖壓/蝕刻框架)</div>
+                            <div class="product-source">來源：ROKKO(新加坡)、JIEXIN(中國)、WISE(中國)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="Jig Saw AOI PNP.jpg" alt="治具鋸 + 自動光學檢測 + 貼放">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">治具鋸 + 自動光學檢測 + 貼放整合方案</div>
+                            <div class="product-source">來源：ROKKO(新加坡) & 切割引擎來自DISCO(日本)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="Die Bonder.jpg" alt="晶片接合機">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">晶片接合機</div>
+                            <div class="product-source">來源：M.S.C.INDUSTRY(中國)</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="MIS Substrate.jpg" alt="MIS基板">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">MIS基板</div>
+                            <div class="product-source">高品質基板解決方案</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="Spare parts.jpg" alt="設備零件">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">設備零件</div>
+                            <div class="product-source">全方位備件庫存</div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="Conversion kit.jpg" alt="轉換套件">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-title">轉換套件</div>
+                            <div class="product-source">靈活轉換解決方案</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section with Vision Image -->
+    <section class="vision">
+        <!-- Replace '願景形象圖.jpg' with your actual vision image file -->
+        <img src="願景形象圖.jpg" alt="Vision" class="vision-bg">
+        <div class="vision-overlay"></div>
+        <div class="container">
+            <div class="lang-content active" id="vision-en">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Our Vision</h2>
+                <p style="font-size: 1.3rem;">Leading the future of IC assembly technology with innovation and excellence</p>
+            </div>
+            <div class="lang-content" id="vision-zh">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">我們的願景</h2>
+                <p style="font-size: 1.3rem;">以創新和卓越引領IC封裝技術的未來</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="lang-content active" id="contact-en">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-card fade-in">
+                        <div class="contact-name">Henry Fang</div>
+                        <div class="contact-email">
+                            <a href="mailto:Henry.fang@apak.com.tw">Henry.fang@apak.com.tw</a>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-name">Jerry Lien</div>
+                        <div class="contact-email">
+                            <a href="mailto:Jerry.lien@apak.com.tw">Jerry.lien@apak.com.tw</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lang-content" id="contact-zh">
+                <h2 class="section-title">聯絡我們</h2>
+                <div class="contact-grid">
+                    <div class="contact-card fade-in">
+                        <div class="contact-name">Henry Fang</div>
+                        <div class="contact-email">
+                            <a href="mailto:Henry.fang@apak.com.tw">Henry.fang@apak.com.tw</a>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-name">Jerry Lien</div>
+                        <div class="contact-email">
+                            <a href="mailto:Jerry.lien@apak.com.tw">Jerry.lien@apak.com.tw</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <!-- Replace 'logo.png' with your actual APAK logo file -->
+                <img src="logo.png" alt="APAK Logo">
+            </div>
+            <div class="copyright">
+                © APAK Material Ltd. 2025 &nbsp;&nbsp;|&nbsp;&nbsp; © APAK Enterprises Inc. 2025
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            // Remove active class from all language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            document.querySelector(`[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected language content
+            document.querySelectorAll(`[id$="-${lang}"]`).forEach(content => {
+                content.classList.add('active');
+            });
+            
+            // Update company names in header
+            document.querySelectorAll('.company-name').forEach(name => {
+                name.textContent = name.getAttribute(`data-${lang}`);
+            });
+            
+            currentLang = lang;
+        }
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize with English
+        switchLanguage('en');
+    </script>
+</body>
+</html>
