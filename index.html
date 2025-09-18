@@ -77,15 +77,27 @@
             background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
         }
 
-        .lang-btn:hover, .lang-btn.active {
+        .lang-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
+        }
+
+        .lang-icon {
+            font-size: 18px;
+        }
+
+        .lang-text {
+            font-weight: 500;
         }
 
         /* Hero Section */
@@ -411,13 +423,15 @@
                         <img src="logo.png" alt="APAK Logo">
                     </div>
                     <div class="company-names">
-                        <div class="company-name" data-en="APAK Material Ltd." data-zh="弘鼎材料科技有限公司">弘鼎材料科技有限公司</div>
-                        <div class="company-name" data-en="APAK Enterprises Inc." data-zh="元泰亨企業有限公司">元泰亨企業有限公司</div>
+                        <div class="company-name" data-en="APAK Material Ltd." data-zh="弘鼎材料科技有限公司">APAK Material Ltd.</div>
+                        <div class="company-name" data-en="APAK Enterprises Inc." data-zh="元泰亨企業有限公司">APAK Enterprises Inc.</div>
                     </div>
                 </div>
                 <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
-                    <button class="lang-btn" onclick="switchLanguage('zh')">繁體中文</button>
+                    <button class="lang-btn active" onclick="toggleLanguage()" id="langToggleBtn">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">繁體中文</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -620,7 +634,7 @@
 
     <!-- Vision Section with Vision Image -->
     <section class="vision">
-        <!-- Replace '願景形象圖.jpg' with your actual vision image file -->
+        <!-- Replace 'Image 10.jpg' with your actual vision image file -->
         <img src="Image 10.jpg" alt="Vision" class="vision-bg">
         <div class="vision-overlay"></div>
         <div class="container">
@@ -683,7 +697,7 @@
                 <img src="logo.png" alt="APAK Logo">
             </div>
             <div class="copyright">
-                © APAK Material Ltd. &nbsp;&nbsp;|&nbsp;&nbsp; © APAK Enterprises Inc. 2025
+                © APAK Material Ltd. 2025 &nbsp;&nbsp;|&nbsp;&nbsp; © APAK Enterprises Inc. 2025
             </div>
         </div>
     </footer>
@@ -691,24 +705,34 @@
     <script>
         let currentLang = 'en';
 
+        function toggleLanguage() {
+            // 切換語言
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            switchLanguage(newLang);
+            
+            // 更新按鈕文字
+            const langBtn = document.getElementById('langToggleBtn');
+            const langText = langBtn.querySelector('.lang-text');
+            
+            if (newLang === 'en') {
+                langText.textContent = '繁體中文';
+            } else {
+                langText.textContent = 'English';
+            }
+        }
+
         function switchLanguage(lang) {
-            // Remove active class from all language buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            document.querySelector(`[onclick="switchLanguage('${lang}')"]`).classList.add('active');
-            
-            // Hide all language content
+            // 隱藏所有語言內容
             document.querySelectorAll('.lang-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Show selected language content
+            // 顯示選定語言內容
             document.querySelectorAll(`[id$="-${lang}"]`).forEach(content => {
                 content.classList.add('active');
             });
             
-            // Update company names in header
+            // 更新header中的公司名稱
             document.querySelectorAll('.company-name').forEach(name => {
                 name.textContent = name.getAttribute(`data-${lang}`);
             });
